@@ -38,8 +38,8 @@ The program doesn't have functionality to detach from the terminal. Use `screen`
 
 ### Build workflow
 ```
-$ mkdir $GOPATH/github.com
-$ cd $GOPATH/github.com 
+$ mkdir $GOPATH/src/github.com
+$ cd $GOPATH/src/github.com 
 $ git clone https://github.com/mssbg/go-gps-tracker.git
 $ cd go-gps-tracker
 $ glide install
