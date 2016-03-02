@@ -21,6 +21,8 @@ Usage of ./go-gps-tracker:
     	Password for the InfluxDB
   -dbport int
     	Port of the InfluxDB server (default 8086)
+  -dbssl
+    	Whether to use HTTPS to connect to InfluxDB
   -dbuser string
     	Username for the InfluxDB
   -port int
@@ -36,8 +38,11 @@ The program doesn't have functionality to detach from the terminal. Use `screen`
 
 ### Build workflow
 ```
+$ mkdir $GOPATH/github.com
+$ cd $GOPATH/github.com 
 $ git clone https://github.com/mssbg/go-gps-tracker.git
 $ cd go-gps-tracker
 $ glide install
+$ go install -v github.com/go-gps-tracker/cmd/...
 ```
 

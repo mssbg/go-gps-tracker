@@ -8,6 +8,7 @@ import (
 )
 
 func main() {
+	var db_ssl = flag.Bool("dbssl", false, "Whether to use HTTPS to connect to InfluxDB")
 	var db_host = flag.String("dbhost", "localhost", "Hostname of the InfluxDB server.")
 	var db_port = flag.Int("dbport", 8086, "Port of the InfluxDB server")
 	var db_user = flag.String("dbuser", "", "Username for the InfluxDB")
@@ -16,9 +17,12 @@ func main() {
 	var port = flag.Int("port", 9000, "UDP port at which to listen for GPS traffic")
 	flag.Parse()
 
+	db_protocol := "http"
+	if *db_ssl {
+		db_protocol = "https"
+	}
 	db := go_gps_tracker.DbConfig{
-		//Address: "http://192.168.2.200:8186",
-		Address:   fmt.Sprintf("https://%s:%d", *db_host, *db_port),
+		Address:   fmt.Sprintf("%s://%s:%d", db_protocol, *db_host, *db_port),
 		Database:  *db_name,
 		Precision: "s",
 	}
