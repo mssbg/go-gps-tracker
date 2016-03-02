@@ -1,0 +1,5 @@
+package: github.com/go-gps-tracker
+import:
+- package: github.com/influxdata/influxdb
+  subpackages:
+  - client/v2
